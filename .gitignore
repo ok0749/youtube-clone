@@ -1,5 +1,4 @@
 .env
 uploads
-static
 node_modules
 npm-debug.log
