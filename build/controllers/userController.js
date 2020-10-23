@@ -36,47 +36,48 @@ var postJoin = /*#__PURE__*/function () {
             _req$body = req.body, name = _req$body.name, email = _req$body.email, password = _req$body.password, password2 = _req$body.password2;
 
             if (!(password !== password2)) {
-              _context.next = 6;
+              _context.next = 7;
               break;
             }
 
+            req.flash("error", "Password don't match");
             res.status(400);
             res.render("join", {
               pageTitle: "Join"
             });
-            _context.next = 19;
+            _context.next = 20;
             break;
 
-          case 6:
-            _context.prev = 6;
-            _context.next = 9;
+          case 7:
+            _context.prev = 7;
+            _context.next = 10;
             return (0, _User["default"])({
               name: name,
               email: email
             });
 
-          case 9:
+          case 10:
             user = _context.sent;
-            _context.next = 12;
+            _context.next = 13;
             return _User["default"].register(user, password);
 
-          case 12:
+          case 13:
             next();
-            _context.next = 19;
+            _context.next = 20;
             break;
 
-          case 15:
-            _context.prev = 15;
-            _context.t0 = _context["catch"](6);
+          case 16:
+            _context.prev = 16;
+            _context.t0 = _context["catch"](7);
             console.log(_context.t0);
             res.redirect(_routes["default"].home);
 
-          case 19:
+          case 20:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[6, 15]]);
+    }, _callee, null, [[7, 16]]);
   }));
 
   return function postJoin(_x, _x2, _x3) {
@@ -96,12 +97,17 @@ exports.getLogin = getLogin;
 
 var postLogin = _passport["default"].authenticate("local", {
   failureRedirect: _routes["default"].login,
-  successRedirect: _routes["default"].home
+  successRedirect: _routes["default"].home,
+  successFlash: "Welcome",
+  failureFlash: "Check your email or password"
 });
 
 exports.postLogin = postLogin;
 
-var githubLogin = _passport["default"].authenticate("github");
+var githubLogin = _passport["default"].authenticate("github", {
+  successFlash: "Welcome",
+  failureFlash: "Check your email or password"
+});
 
 exports.githubLogin = githubLogin;
 
@@ -172,6 +178,7 @@ var postGithubLogin = function postGithubLogin(req, res) {
 exports.postGithubLogin = postGithubLogin;
 
 var logout = function logout(req, res) {
+  req.flash("info", "Logged out, see you later");
   req.logout();
   res.redirect(_routes["default"].home);
 };
@@ -221,21 +228,23 @@ var postEditProfile = /*#__PURE__*/function () {
             });
 
           case 4:
+            req.flash("success", "Profile updated");
             res.redirect(_routes["default"].me);
-            _context3.next = 10;
+            _context3.next = 12;
             break;
 
-          case 7:
-            _context3.prev = 7;
+          case 8:
+            _context3.prev = 8;
             _context3.t0 = _context3["catch"](1);
+            req.flash("error", "Can't update profile");
             res.redirect(_routes["default"].editProfile);
 
-          case 10:
+          case 12:
           case "end":
             return _context3.stop();
         }
       }
-    }, _callee3, null, [[1, 7]]);
+    }, _callee3, null, [[1, 8]]);
   }));
 
   return function postEditProfile(_x8, _x9) {
@@ -265,38 +274,40 @@ var postChangePassword = /*#__PURE__*/function () {
             _context4.prev = 1;
 
             if (!(newPassword !== newPassword1)) {
-              _context4.next = 7;
+              _context4.next = 8;
               break;
             }
 
+            req.flash("error", "Passwords don't match");
             res.status(400);
             res.redirect(_routes["default"].users + _routes["default"].changePassword);
-            _context4.next = 10;
+            _context4.next = 11;
             break;
 
-          case 7:
-            _context4.next = 9;
+          case 8:
+            _context4.next = 10;
             return req.user.changePassword(oldPassword, newPassword);
 
-          case 9:
+          case 10:
             res.redirect(_routes["default"].me);
 
-          case 10:
-            _context4.next = 16;
+          case 11:
+            _context4.next = 18;
             break;
 
-          case 12:
-            _context4.prev = 12;
+          case 13:
+            _context4.prev = 13;
             _context4.t0 = _context4["catch"](1);
+            req.flash("error", "Can't change password");
             res.status(400);
             res.redirect(_routes["default"].users + _routes["default"].changePassword);
 
-          case 16:
+          case 18:
           case "end":
             return _context4.stop();
         }
       }
-    }, _callee4, null, [[1, 12]]);
+    }, _callee4, null, [[1, 13]]);
   }));
 
   return function postChangePassword(_x10, _x11) {
@@ -325,15 +336,16 @@ var userDetail = /*#__PURE__*/function () {
               pageTitle: "User Detail",
               user: user
             });
-            _context5.next = 12;
+            _context5.next = 13;
             break;
 
           case 9:
             _context5.prev = 9;
             _context5.t0 = _context5["catch"](1);
+            req.flash("error", "User not found");
             res.redirect(_routes["default"].home);
 
-          case 12:
+          case 13:
           case "end":
             return _context5.stop();
         }
