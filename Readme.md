@@ -1,6 +1,6 @@
 # youtube-clone
 
-vanilla.js와 Node.js를 사용하여 youtube 사이트를 cloning한 프로젝트입니다.
+Node.js를 공부하고 익히기 위해 youtube를 cloning한 프로젝트입니다.
 
 ## 화면 구성 : 
 - [Home](#home)
@@ -26,19 +26,19 @@ vanilla.js와 Node.js를 사용하여 youtube 사이트를 cloning한 프로젝�
 ### Join
 ![Screen Shot 2021-05-06 at 1 12 20 PM](https://user-images.githubusercontent.com/63099945/117240968-f7154780-ae6c-11eb-97a3-bfd254805033.png)
 1. 모든 빈 칸에 내용 입력해야 join 가능
-2. github, facebook을 통한 join -> 현재 에러로 사용불가, 해결해야함 
+2. github, facebook을 통한 join
 3. join시 로그인 한 상태로 Home 화면으로 이동 
 
 ### Login 
 ![Screen Shot 2021-05-06 at 1 20 08 PM](https://user-images.githubusercontent.com/63099945/117241307-d0a3dc00-ae6d-11eb-83b6-baf5b6bc2364.png)
-1. github, facebook을 통한 login -> 현재 에러로 사용불가, 해결해야함 
+1. github, facebook을 통한 login
 2. 로그인시 Home 화면으로 이동 
 
 ### Profile
 ![Screen Shot 2021-05-06 at 1 24 47 PM](https://user-images.githubusercontent.com/63099945/117241582-76efe180-ae6e-11eb-9f0e-5ba2bfe816d2.png)
 1. Edit profile 화면으로 이동해 프로필 사진, 이름, 이메일 주소 수정 가능
 2. Change Password 화면으로 이동해 비밀번호 변경 가능 
-3. 사용자가 업로드한 동영상 확인 가능 -> 현재 업로드한 동영상 보이지 않음, 해결해야함 
+3. 사용자가 업로드한 동영상 확인 가능
 
 ### Upload
 ![Screen Shot 2021-05-06 at 1 32 50 PM](https://user-images.githubusercontent.com/63099945/117242115-93404e00-ae6f-11eb-815a-116cfbd40ac3.png)
